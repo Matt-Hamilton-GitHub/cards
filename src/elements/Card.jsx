@@ -1,11 +1,19 @@
 import styled from "styled-components";
 
 const Card = ({ item }) => {
-  const { id, name, job, image, text } = item;
+  const { id, name, job, image, text, perks } = item;
   return (
     <Wrapper>
       <div className="title-div">{name}</div>
-      <ImageDiv props={image}></ImageDiv>
+      <ImageDiv img={image}></ImageDiv>
+      <div className="perks-div">
+        {perks.map((perk) => {
+          return <span>{perk}</span>;
+        })}
+      </div>
+      <div className="card-desc-div">
+        <p>{text}</p>
+      </div>
     </Wrapper>
   );
 };
@@ -13,13 +21,17 @@ const Card = ({ item }) => {
 export default Card;
 
 const ImageDiv = styled.div`
-  position: relative;
-  background: url("https://portfolio-mh.com/static/media/cozyHome.5613d69b.gif");
+  position: absolute;
+  background: url(${(props) => props.img});
+  background-size: cover;
+  object-fit: cover;
   mix-blend-mode: normal;
-  border: 3px solid #ecc1c1;
-  width: 29px;
-  height: 40px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  width: 100%;
+  height: 60%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 65%);
 `;
 
 const Wrapper = styled.div`
@@ -44,13 +56,41 @@ const Wrapper = styled.div`
     background: rgba(217, 217, 217, 0.38);
     align-items: center;
     justify-content: center;
+    z-index: 2;
   }
 
-  img {
-    box-sizing: border-box;
+  .perks-div {
+    position: absolute;
+    display: flex;
+    top: 50%;
+    left: 12%;
+    background: rgba(130, 130, 130, 0.54);
+    border: 2px solid #e7e7e7;
+    z-index: 2;
+    width: auto;
+    height: 50px;
+  }
 
-    mix-blend-mode: normal;
-    border: 3px solid #ecc1c1;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  .perks-div span {
+    padding: 5px;
+  }
+
+  .card-desc-div {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 70.7%;
+    bottom: 0%;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background: rgba(217, 217, 217, 0.38);
+  }
+
+  .card-desc-div p {
+    padding: 5px;
+    font-size: 9.4px;
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: clip;
   }
 `;

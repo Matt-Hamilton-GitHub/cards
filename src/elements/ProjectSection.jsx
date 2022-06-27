@@ -31,7 +31,7 @@ const ProjectSection = () => {
         </div>
         <div className="project-cards-section">
           {prjsDb.slice(currentId, currentId + 3).map((item) => {
-            const { id, name, job, image, text } = item;
+            const { id, name, job, image, text, perks } = item;
             return (
               <div
                 className={id === currentId + 2 ? "card main " : "card"}
