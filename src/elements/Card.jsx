@@ -35,6 +35,9 @@ const ImageDiv = styled.div`
 `;
 
 const Wrapper = styled.div`
+  font-family: "Jura";
+  font-style: normal;
+
   position: relative;
   min-width: 100%;
   min-height: 100%;
@@ -53,7 +56,7 @@ const Wrapper = styled.div`
     border-top-right-radius: 30px;
     min-width: 100%;
     height: 50px;
-    background: rgba(217, 217, 217, 0.38);
+    background: rgba(217, 217, 217, 0.7);
     align-items: center;
     justify-content: center;
     z-index: 2;
@@ -84,6 +87,7 @@ const Wrapper = styled.div`
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     background: rgba(217, 217, 217, 0.38);
+    user-select: none;
   }
 
   .card-desc-div p {
