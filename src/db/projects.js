@@ -5,7 +5,7 @@ import { DiJqueryLogo } from "react-icons/di";
 
 const projectsDb = [
   {
-    id: 1,
+    id: 0,
     name: "susan smith",
     job: "web developer",
     image:
@@ -19,7 +19,7 @@ const projectsDb = [
     ]
   },
   {
-    id: 2,
+    id: 1,
     name: "anna johnson",
     job: "web designer",
     image:
@@ -33,7 +33,7 @@ const projectsDb = [
     ]
   },
   {
-    id: 3,
+    id: 2,
     name: "peter jones",
     job: "intern",
     image:
@@ -47,7 +47,7 @@ const projectsDb = [
     ]
   },
   {
-    id: 4,
+    id: 3,
     name: "bill anderson",
     job: "the boss",
     image:
@@ -61,7 +61,7 @@ const projectsDb = [
     ]
   },
   {
-    id: 5,
+    id: 4,
     name: "Sarah Corrneky",
     job: "Developer",
     image:
@@ -75,7 +75,7 @@ const projectsDb = [
     ]
   },
   {
-    id: 6,
+    id: 5,
     name: "Alis McMillan",
     job: "Senior Developer",
     image:

@@ -15,9 +15,16 @@ const ProjectSection = () => {
       if (currentId < prjsDb.length - 1) setCurrentId(currentId + 1);
       else setCurrentId(0);
     } else {
-      if (currentId < prjsDb.length && currentId !== 0)
+      if (currentId < prjsDb.length && currentId !== 0) {
         setCurrentId(currentId - 1);
-      else if (currentId === 0) setCurrentId(prjsDb.length - 1);
+        if (currentId % 3 === 0) {
+          setSliceDb(prjsDb.slice(currentId - 3, currentId));
+          setCurrentId(currentId - 1);
+        }
+      } else if (currentId === 0) {
+        setSliceDb(prjsDb.slice(prjsDb.length - (prjsDb.length % 3)));
+        setCurrentId(prjsDb.length - 1);
+      }
     }
   };
 
@@ -41,7 +48,6 @@ const ProjectSection = () => {
                   : "single-dot"
               }
               key={item.id}
-              onClick={() => setCurrentId(item.id - 1)}
             ></div>
           );
         })}
@@ -55,9 +61,9 @@ const ProjectSection = () => {
             const { id, name, job, image, text, perks } = item;
             return (
               <div
-                className={id === currentId + 1 ? "card main " : "card"}
+                className={id === currentId ? "card main " : "card"}
                 key={id}
-                onClick={() => setCurrentId(id - 1)}
+                onClick={() => setCurrentId(id)}
               >
                 <Card key={id} item={item} />
               </div>
@@ -98,17 +104,17 @@ const Wrapper = styled.div`
     justify-content: space-evenly;
     align-items: center;
     width: 350px;
-    height: 25px;
+    height: 15px;
     border: solid 5px rgba(149, 167, 211, 1);
     background: rgba(94, 94, 94, 1);
-    border: 2px solid #95a7d3;
+    border: 1px solid #95a7d3;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.5);
     border-radius: 50px;
   }
 
   .single-dot {
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     clip-path: polygon(
       50% 0%,
       61% 35%,
@@ -122,11 +128,10 @@ const Wrapper = styled.div`
       39% 35%
     );
     background: #273f55;
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-    cursor: pointer;
+    box-shadow: inset 3px -4px 8px rgba(0, 0, 0, 1);
   }
   .single-dot-selected {
-    transform: scale(1.1);
+    transform: scale(1.5);
     background: orange;
     mix-blend-mode: color-burn;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
